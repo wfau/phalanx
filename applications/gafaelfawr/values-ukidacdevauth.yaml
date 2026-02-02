@@ -27,3 +27,7 @@ config:
     uidAttr: "uid"
     #gidAttr: "gid"
     #groupBaseDn: "cn=groups,dc=dev,dc=lsst,dc=ac,dc=uk"
+
+  oidcServer:
+    enabled: false
+  
