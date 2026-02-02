@@ -2,7 +2,7 @@ name: "ukidacdevauth"
 fqdn: "rsp-dev.lsst.ac.uk"
 appOfAppsName: "science-platform"
 vaultUrl: "https://vault-rsp.lsst.ac.uk"
-vaultPathPrefix: ""secret/phalanx/ukidacdevauth"
+vaultPathPrefix: "secret/phalanx/ukidacdevauth"
 applications:
   postgres: true
   squareone: true
