@@ -1,0 +1,12 @@
+argo-cd:
+  configs:
+    cm:
+      url: "https://rsp-dev.lsst.ac.uk/argo-cd"
+      ui.bannercontent: "ukidacdevauth"
+    secret:
+      createSecret: false
+
+  server:
+    ingress:
+      hostname: "rsp-dev.lsst.ac.uk"
+      tls: true
