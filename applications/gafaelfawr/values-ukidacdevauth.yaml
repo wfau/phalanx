@@ -28,6 +28,7 @@ config:
     gidAttr: "gidNumber"
     groupBaseDn: "cn=groups,dc=dev,dc=lsst,dc=ac,dc=uk"
     groupMemberAttr: "memberUid"
+    groupSearchByDn: false
 
   oidcServer:
     enabled: false
