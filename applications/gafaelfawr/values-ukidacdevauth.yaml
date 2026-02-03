@@ -30,4 +30,13 @@ config:
 
   oidcServer:
     enabled: false
-  
+
+  groupMapping:
+    "exec:internal-tools":
+      - "rsp"
+    "exec:notebook":
+      - "rsp"
+    "exec:portal":
+      - "rsp"
+    "read:image":
+      - "rsp"
