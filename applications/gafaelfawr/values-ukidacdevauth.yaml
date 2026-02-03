@@ -26,7 +26,7 @@ config:
     userBaseDn: "ou=users,dc=dev,dc=lsst,dc=ac,dc=uk"
     uidAttr: "uidNumber"
     gidAttr: "gidNumber"
-    groupBaseDn: "cn=groups,dc=dev,dc=lsst,dc=ac,dc=uk"
+    groupBaseDn: "ou=groups,dc=dev,dc=lsst,dc=ac,dc=uk"
     groupMemberAttr: "memberUid"
     groupSearchByDn: false
 
