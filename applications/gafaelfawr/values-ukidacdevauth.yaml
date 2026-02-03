@@ -24,8 +24,8 @@ config:
     url: "ldap://aai-dev.lsst.ac.uk"
     userDn: "cn=admin,dc=dev,dc=lsst,dc=ac,dc=uk"
     userBaseDn: "ou=users,dc=dev,dc=lsst,dc=ac,dc=uk"
-    uidAttr: "uid"
-    gidAttr: "gid"
+    uidAttr: "uidNumber"
+    gidAttr: "gidNumber"
     groupBaseDn: "cn=groups,dc=dev,dc=lsst,dc=ac,dc=uk"
 
   oidcServer:
