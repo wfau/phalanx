@@ -39,12 +39,12 @@ config:
     "exec:admin":
       - "rsp"
     "exec:internal-tools":
+      - "users"
       - "rsp"
     "exec:notebook":
       - "rsp"
     "exec:portal":
       - "rsp"
-      - "users"
     "exec:portal-admin":
       - "rsp"
     "read:image":
