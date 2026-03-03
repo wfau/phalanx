@@ -6,3 +6,4 @@ vaultPathPrefix: "secret/phalanx/ukidacdevauth"
 applications:
   postgres: true
   squareone: true
+  portal: true
