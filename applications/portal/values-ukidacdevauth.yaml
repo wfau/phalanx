@@ -1,0 +1,8 @@
+replicaCount: 1
+
+resources:
+  limits:
+    memory: "4Gi"
+
+config:
+  hipsUrl: "http://alasky.cds.unistra.fr/DSS/DSSColor"
