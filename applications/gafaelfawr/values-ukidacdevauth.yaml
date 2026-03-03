@@ -44,6 +44,7 @@ config:
       - "rsp"
     "exec:portal":
       - "rsp"
+      - "users"
     "exec:portal-admin":
       - "rsp"
     "read:image":
