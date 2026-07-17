@@ -7,3 +7,4 @@ applications:
   postgres: true
   squareone: true
   portal: true
+  nublado: true
