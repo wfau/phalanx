@@ -50,6 +50,3 @@ jupyterhub:
   hub:
     db:
       upgrade: true
-
-secrets:
-  templateSecrets: false
