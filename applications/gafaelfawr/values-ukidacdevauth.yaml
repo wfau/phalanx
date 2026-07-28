@@ -10,7 +10,7 @@ config:
 
   updateSchema: false
   
- oidc:
+  oidc:
     clientId: "rsp-test"
     audience: "rsp-test"
     loginUrl: "https://aai-test.lsst.ac.uk/realms/lsst/protocol/openid-connect/auth"
