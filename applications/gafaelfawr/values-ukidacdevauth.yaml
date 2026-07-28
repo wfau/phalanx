@@ -36,6 +36,20 @@ config:
   groupMapping:
     "admin:userinfo":
       - "rsp"
+    "exec:admin":
+      - "rsp"
+    "exec:internal-tools":
+      - "users"
+      - "rsp"
+    "exec:notebook":
+      - "rsp"
+    "exec:portal":
+      - "rsp"
+    "exec:portal-admin":
+      - "rsp"
+    "read:image":
+      - "rsp"
+    "read:tap":
       - "rsp"
 
   initialAdmins:
