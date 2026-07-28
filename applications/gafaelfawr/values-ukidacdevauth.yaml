@@ -1,3 +1,10 @@
+redis:
+  persistence:
+    enabled: false
+
+config:
+  internalDatabase: true
+  
   oidcServer:
     enabled: true
 
