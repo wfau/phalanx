@@ -53,7 +53,9 @@ config:
       - "rsp"
 
   initialAdmins:
-    - "test1"
+    - "gpfrancis"
+    - "davedavemckay"
+    - "etoledor"
 
     
     
