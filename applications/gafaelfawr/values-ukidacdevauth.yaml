@@ -30,6 +30,9 @@ config:
     groupMemberAttr: "memberUid"
     groupSearchByDn: false
 
+  oidcServer:
+    enabled: false
+
   groupMapping:
     "admin:userinfo":
       - "rsp"
