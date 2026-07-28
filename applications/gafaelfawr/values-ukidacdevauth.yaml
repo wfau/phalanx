@@ -8,8 +8,8 @@ config:
   updateSchema: false
   
   oidc:
-    clientId: "rsp-test"
-    audience: "rsp-test"
+    clientId: "rsp-dev"
+    audience: "rsp-dev"
     loginUrl: "https://aai-test.lsst.ac.uk/realms/lsst/protocol/openid-connect/auth"
     tokenUrl: "https://aai-test.lsst.ac.uk/realms/lsst/protocol/openid-connect/token"
     issuer: "https://aai-test.lsst.ac.uk/realms/lsst"
