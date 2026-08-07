@@ -1,0 +1,12 @@
+argo-cd:
+  configs:
+    cm:
+      url: "https://wfau.lsst.ac.uk/argo-cd"
+      ui.bannercontent: "wfauarchives"
+    secret:
+      createSecret: false
+
+  server:
+    ingress:
+      hostname: "wfau.lsst.ac.uk"
+      tls: true
