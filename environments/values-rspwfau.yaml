@@ -1,8 +1,8 @@
-name: "ukidacdev"
-fqdn: "rsp-test.lsst.ac.uk"
+name: "rspwfau"
+fqdn: "wfau.lsst.ac.uk"
 appOfAppsName: "science-platform"
 vaultUrl: "https://vault.lsst.ac.uk"
-vaultPathPrefix: "kv-v2/k8s_operator/ukidacdev"
+vaultPathPrefix: "kv-v2/k8s_operator/rspwfau"
 applications:
   postgres: true
   squareone: true
