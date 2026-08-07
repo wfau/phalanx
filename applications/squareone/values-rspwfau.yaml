@@ -1,0 +1,6 @@
+config:
+  siteName: "WFAU Archives"
+  semaphoreUrl: "https://wfau.lsst.ac.uk/semaphore"
+
+ingress:
+  tls: false
