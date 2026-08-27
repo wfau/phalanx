@@ -22,11 +22,11 @@ git show \
     --format='%h %cs %s' \
     "$BASE"
 
-echo
-echo "Upstream commits:"
-git log \
-    --oneline \
-    "$BASE" "$MAIN_BRANCH"
+# echo
+# echo "Upstream commits:"
+# git log \
+#     --oneline \
+#     "$BASE" "$MAIN_BRANCH"
 
 echo
 echo "Changed files:"
