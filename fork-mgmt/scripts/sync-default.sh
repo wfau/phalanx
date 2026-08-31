@@ -24,12 +24,12 @@ exclude_items=( "fork-mgmt/*"
                 ".github/*"
 )
 
-git switch $DEFAULT_BRANCH
-git merge --no-ff --no-commit $MERGE_BRANCH
+git switch "$DEFAULT_BRANCH"
+git merge --no-ff --no-commit "$MERGE_BRANCH"
 
 for i in "${exclude_items[@]}" ; do
     git reset HEAD "$i"
     git checkout -- "$i"
 done
 
-git commit -m "Sync ${DEFAULT_BRANCH} with ${MERGE_TARGET}"
+git commit -m "Sync ${DEFAULT_BRANCH} with ${MERGE_BRANCH}"
