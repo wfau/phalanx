@@ -31,7 +31,7 @@ for i in "${exclude_items[@]}" ; do
     git checkout -- "$i"
 done
 
-git commit -m "Sync ${DEFAULT_BRANCH} with $MERGE_TARGET"
+git commit -m "Sync ${DEFAULT_BRANCH} with ${MERGE_TARGET}"
 
 
 # git switch fork-mgmt
