@@ -18,6 +18,7 @@ MERGE_BRANCH="main"
 echo "${MERGE_BRANCH}"
 echo "${DEFAULT_BRANCH}"
 
+# Array of files/dirs to exclude from the merge
 exclude_items=( "fork-mgmt/*"
                 "README.md"
                 ".github/*"
@@ -32,14 +33,3 @@ for i in "${exclude_items[@]}" ; do
 done
 
 git commit -m "Sync ${DEFAULT_BRANCH} with ${MERGE_TARGET}"
-
-
-# git switch fork-mgmt
-# git merge --no-ff --no-commit main
-# git reset HEAD README.md
-# git reset HEAD fork-mgmt/*
-# git reset HEAD .github/*
-# git checkout -- README.md
-# git checkout -- fork-mgmt/*
-# git checkout -- .github/*
-# git commit -m "Sync with main"
