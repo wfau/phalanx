@@ -1,27 +1,20 @@
 # fork-mgmt
 
 Branch for tasks relating to managing and tracking the upstream source of the forked repo.
-
 The intention is that this will be replaced with automation (e.g., via GitHub Actions) once the project is stable.
 
 ## Branch policy
 
+The current default branch is: `fork-mgmt`
+
 - Branch `main` is a fork of `lsst-sqre/phalanx:main`. No changes should be made to `main`.
-- Branch `fork-mgmt` is created from `main`. The only difference should be the folder `fork-mgmt`. No other changes should be made to branch `fork-mgmt`
-- At least one deployment branch should be created. `main` should not be used for deployment.
-- Where changes are required, create a candidate branch.
-- When the changes on the candidate branch have been tested and validated, merge these into a deployment branch.
+- Branch `fork-mgmt` is used for sync and management tasks.
 
 ## Mgmt tasks
 
-The folder `fork-mgmt` will hold any scripts or docs relating specifically to managing the fork. This should be the only local change between branch `fork-mgmt` and branch `main`.
 
-To make this available when other branches are checked out, add to git worktree:
 
-```sh
-git worktree add ../repo-mgmt fork-mgmt
-```
-and run scripts from `../repo-mgmt/fork-mgmt/...`
+
 
 ---
 For syncing `main` with the upstream source `lsst-sqre/phalanx:main`, the source should be added as an additional fetch-only remote labelled `upstream`
