@@ -49,13 +49,35 @@ git fetch origin
 git merge origin/main
 ```
 
-## lsst-uk branch
+## lsst-uk
+
+### rspwfau deployment branch
 
 The `lsst-uk/phalanx` repo is a separate fork of `lsst-sqre/phalanx`. The branch `lsst-uk/phalanx:u/etoledo/rspwfau` has been used to create a test deployment of the RSP called rspwfau on Somerville, currently available at https://wfau.lsst.ac.uk/.
 
 
 `https://github.com/lsst-uk/phalanx/tree/u/etoledo/rspwfau`
 
+```sh
+# Add lsst-uk remote
+git remote add lsst git@github.com:lsst-uk/phalanx.git
 
+# Replace the push url
+git remote set-url --push lsstuk DISABLED
+
+# Check remotes
+git remote -v
+
+# Add the branch to the current repo
+git fetch lsstuk u/etoledo/rspwfau:u/etoledo/rspwfau
+git checkout u/etoledo/rspwfau
+git push --set-upstream origin u/etoledo/rspwfau
+```
+
+### Compare `lsst-uk/phalanx:main` with `wfau/phalanx:main`
+
+```sh
+git diff --name-only main u/etoledo/rspwfau
+```
 
 <!-- End -->
