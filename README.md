@@ -3,6 +3,7 @@
 - [WFAU/Phalanx](#wfauphalanx)
   - [Phalanx info](#phalanx-info)
   - [Branch strategy](#branch-strategy)
+  - [Branch protection rules](#branch-protection-rules)
   - [Workflows](#workflows)
 
 This is a fork of the Argo CD repository for the Rubin Science Platform, customised for WFAU.
@@ -36,7 +37,21 @@ The branching and update strategy is broadly expected to be:
 - When the changes are validated, the candidate branch is merged with the current production deployment branch.
 - The changes are deployed to production.
 
+## Branch protection rules
+To protect the `main` branch from direct changes, a classic branch protetion rule has been defined as follows:
+
+- Lock branch = true
+  - Allow fork syncing = true
 
 
 ## Workflows
-tbd
+GitHub workflows are defined per branch in [.github/workflows](.github/workflows).
+
+The workflows in `main` are from the upstream repo. These are disabled in the current repo.
+
+The workflows for the current repo are defined in the default branch and are expected to run from that branch.
+
+- [syncfork.yaml](.github/workflows/syncfork.yaml): Runs on a daily schedule to synchronise `main` with upstream `lsst-sqre/phalanx:main`. Can also be run manually from the GitHub UI.
+
+
+<!-- End -->
