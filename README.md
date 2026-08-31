@@ -1,6 +1,7 @@
 # Phalanx
 
-This is the Argo CD repository for the Rubin Science Platform.
+This is a fork the Argo CD repository for the Rubin Science Platform, **customised for WFAU**.
+
 It stores the root Argo CD application, deployment configuration for the other applications, and a command-line tool to manage Phalanx environments.
 
 See [phalanx.lsst.io](https://phalanx.lsst.io/) for full documentation.
