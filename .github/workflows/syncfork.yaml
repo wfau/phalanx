@@ -6,7 +6,6 @@ name: Sync Fork Main
 "on":
   schedule:
     - cron: "42 8 * * *"
-      timezone: "Europe/London"
   workflow_dispatch: {}
 
 permissions:
