@@ -7,7 +7,7 @@ name: Sync Fork Main
   schedule:
     #- cron: "42 8 * * *"
     - cron: "*/5 * * * *"
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 permissions:
   contents: write
