@@ -3,10 +3,9 @@
 
 name: Sync Fork Main
 
-"on":
+on:
   schedule:
     - cron: "42 8 * * *"
-    #- cron: "*/59 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -49,7 +48,7 @@ jobs:
             +refs/heads/fork-mgmt:refs/remotes/origin/fork-mgmt
       
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: "3.13"
 
