@@ -10,15 +10,36 @@ a workflow.
 """
 
 import sys
+import argparse
 from pathlib import PurePosixPath
 from typing import Any
 
 import yaml
-from git import Repo
+from git import Repo, GitCommandError
 from tabulate import tabulate
 
 
 # Helper funcs
+
+def ref_exists(repo: Repo, branch: str) -> bool:
+    """
+    Return whether a branch exists in local 
+    or remote tracking.
+    """
+    refs = (
+        f"refs/heads/{branch}",
+        f"refs/remotes/{branch}",
+    )
+
+    for ref in refs:
+        try:
+            repo.git.show_ref("--verify", "--quiet", ref)
+            return True
+        except GitCommandError:
+            continue
+
+    return False
+
 def read_file_at_ref(repo: Repo, ref: str, path: str) -> str | None:
     """Read file at git commit ref."""
     commit = repo.commit(ref)
@@ -130,24 +151,67 @@ def render_markdown(report: dict) -> str:
     )
 
 # Global vars
-base_branch = "origin/fork-mgmt"
-target_branch = "origin/main"
+DEFAULT_BASE_REF = "origin/fork-mgmt"
+DEFAULT_TARGET_REF = "origin/main"
 
 if __name__ == "__main__":
 
+    parser = argparse.ArgumentParser(
+        description="Compare changed apps in two branches and generate tabulated output"
+    )
+
+    # Specify branches to compare
+    parser.add_argument(
+        "-b",
+        "--base",
+        type=str, 
+        default=DEFAULT_BASE_REF,
+        help="Base Git ref for comparison."
+        )
+
+    parser.add_argument(
+        "-t",
+        "--target", 
+        type=str, 
+        default=DEFAULT_TARGET_REF,
+        help="Target Git ref for comparison."
+        )
+
+    args = parser.parse_args()
 
     # Use current context
     repo = Repo(".")
 
-    base_commit = repo.commit(base_branch)
-    target_commit = repo.commit(target_branch)
-    merge_base = repo.merge_base(base_commit, target_commit)[0]
+    base_ref = args.base
+    target_ref = args.target
+
+    # Validate branches
+    if not ref_exists(repo, base_ref):
+        parser.error(f"base ref does not exist: {base_ref!r}")
+
+    if not ref_exists(repo, target_ref):
+        parser.error(f"target ref does not exist: {target_ref!r}")
+
+    base_commit = repo.commit(base_ref)
+    target_commit = repo.commit(target_ref)
+
+    # Check merge base exists
+    merge_bases = repo.merge_base(base_commit, target_commit)
+    if not merge_bases:
+        parser.error(
+            f"Git refs have no common ancestor: {base_ref!r}, {target_ref!r}"
+        )
+    # Take the most recent if exists
+    merge_base = merge_bases[0]
+    
+    
+    old_ref = merge_base.hexsha
 
     # Build report dict
     report = {
         "comparison": {
-            "base_ref": base_branch,
-            "target_ref": target_branch,
+            "base_ref": base_ref,
+            "target_ref": target_ref,
             "base_commit": base_commit.hexsha,
             "target_commit": target_commit.hexsha,
             "merge_base": merge_base.hexsha,
@@ -157,18 +221,27 @@ if __name__ == "__main__":
         "image_tag_changes": [],
     }
 
-    # Populate dict
+    # Populate dict #
+    
+    # Diff latest common merge with tip of target branch
     name_status = repo.git.diff(
         "--name-status",
-        f"{base_branch}...{target_branch}",
+        old_ref,
+        target_ref,
         "--",
         "applications/",
     ).splitlines()
 
+    # Preserve the source path to avoid returning none for old tags
+    old_paths = {}
+
     for row in name_status:
         parts = row.split("\t")
         status = parts[0]
-        path = parts[-1]  # for renames, this is the new path
+        path = parts[-1]  # for renames this is the new path
+        old_path = parts[-2] if status.startswith(("R", "C")) else path
+        old_paths[path] = old_path
+
 
         app = PurePosixPath(path).parts[1]
 
@@ -186,8 +259,8 @@ if __name__ == "__main__":
     )
 
     for app in changed_apps:
-        old = chart_app_version(repo, base_branch, app)
-        new = chart_app_version(repo, target_branch, app)
+        old = chart_app_version(repo, old_ref, app)
+        new = chart_app_version(repo, target_ref, app)
 
         if old != new:
             report["app_version_changes"].append(
@@ -209,8 +282,8 @@ if __name__ == "__main__":
         ):
             continue
 
-        old = image_tag(repo, base_branch, path)
-        new = image_tag(repo, target_branch, path)
+        old = image_tag(repo, old_ref, old_paths[path])
+        new = image_tag(repo, target_ref, path)
 
         if old != new:
             report["image_tag_changes"].append(

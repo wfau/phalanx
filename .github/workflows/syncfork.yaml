@@ -6,10 +6,26 @@ name: Sync Fork Main
 on:
   schedule:
     - cron: "42 8 * * *"
+
   workflow_dispatch:
+    inputs:
+      base_branch:
+        description: Branch to compare from
+        required: true
+        type: string
+        default: fork-mgmt
+      target_branch:
+        description: Branch to compare against
+        required: true
+        type: string
+        default: main
 
 permissions:
   contents: write
+
+env:
+  BASE_BRANCH: ${{ inputs.base_branch || 'fork-mgmt'}}
+  TARGET_BRANCH: ${{ inputs.target_branch || 'main' }}
 
 concurrency:
   group: sync-fork-main
@@ -26,7 +42,7 @@ jobs:
           gh api \
             --method POST \
             "repos/${GITHUB_REPOSITORY}/merge-upstream" \
-            --field branch=main
+            --field branch=${TARGET_BRANCH}
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -44,8 +60,8 @@ jobs:
       - name: Fetch synced main
         run: |
           git fetch --no-tags origin \
-            +refs/heads/main:refs/remotes/origin/main \
-            +refs/heads/fork-mgmt:refs/remotes/origin/fork-mgmt
+            +refs/heads/${TARGET_BRANCH}:refs/remotes/origin/${TARGET_BRANCH} \
+            +refs/heads/${BASE_BRANCH}:refs/remotes/origin/${BASE_BRANCH}
       
       - name: Set up Python
         uses: actions/setup-python@v7
@@ -57,7 +73,10 @@ jobs:
 
       - name: Generate report
         run: |
-          python fork-mgmt/scripts/change-report.py >> "$GITHUB_STEP_SUMMARY"
+          python fork-mgmt/scripts/change-report.py \
+          --base "origin/${BASE_BRANCH}" \
+          --target "origin/${TARGET_BRANCH}" \
+          >> "$GITHUB_STEP_SUMMARY"
 
             
         
