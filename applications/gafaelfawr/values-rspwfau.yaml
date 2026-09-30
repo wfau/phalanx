@@ -11,7 +11,7 @@ config:
   updateSchema: true
 
   github:
-    clientId: "10172b4db1b67ee31620"
+    clientId: "Ov23li82U9NKJqgcXMNf"
 
 
 # Support generating user metadata for CADC authentication code.
@@ -21,36 +21,36 @@ config:
   groupMapping:
     "admin:userinfo":
       - github:
-          organization: "lsp-uk"
-          team: "dev"
+          organization: "wfau"
+          team: "trsp-dev"
     "exec:admin":
       - github:
-          organization: "lsp-uk"
-          team: "dev"
+          organization: "wfau"
+          team: "trsp-dev"
     "exec:internal-tools":
       - github:
-          organization: "lsp-uk"
-          team: "dev"
+          organization: "wfau"
+          team: "trsp-dev"
     "exec:notebook":
       - github:
-          organization: "lsp-uk"
-          team: "dev"
+          organization: "wfau"
+          team: "trsp-dev"
     "exec:portal":
       - github:
-          organization: "lsp-uk"
-          team: "dev"
+          organization: "wfau"
+          team: "trsp-dev"
     "exec:portal-admin":
       - github:
-          organization: "lsp-uk"
-          team: "dev"
+          organization: "wfau"
+          team: "trsp-dev"
     "read:image":
       - github:
-          organization: "lsp-uk"
-          team: "dev"
+          organization: "wfau"
+          team: "trsp-dev"
     "read:tap":
       - github:
-          organization: "lsp-uk"
-          team: "dev"
+          organization: "wfau"
+          team: "trsp-dev"
 
   initialAdmins:
-    - "lelliot"
+    - "lelliott"
