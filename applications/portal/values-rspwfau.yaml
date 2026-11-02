@@ -1,9 +1,8 @@
+image:
+    repository: "wfau/suit"
+    tag: "allowlist"
+    
 config:
-  image:
-    repository:
-      "wfau/suit"
-    tag:
-      "allowlist"
   rubinSidebarMenuItemAllowlist:
     - "TAPSearch"
     - "SIAv2Search"
