@@ -1,0 +1,15 @@
+config:
+  image:
+    repository:
+      "wfau/suit"
+    tag:
+      "allowlist"
+  rubinSidebarMenuItemAllowlist:
+    - "TAPSearch"
+    - "SIAv2Search"
+  rubinPrimaryMenuItemAllowlist:
+    - "TAPSearch"
+    - "SIAv2Search"
+  backgroundMonitor: false
+  siav2AdditionaServicesOverride: null # Override additional SIAv2 services (`null` retains defaults; `[]` removes them)
+  tapAdditionalServicesOverride: null # Override additional TAP services (`null` retains defaults; `[]` removes them)

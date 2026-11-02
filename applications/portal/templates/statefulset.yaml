@@ -140,10 +140,22 @@ spec:
                 {{- end }}
             - name: "PROPS_FIREFLY_OPTIONS"
               value: >-
-                {
+                {   
+                   {{- if kindIs "slice" .Values.config.rubinSidebarMenuItemAllowlist }}
+                   "rubinSidebarMenuItemAllowlist": {{ .Values.config.rubinSidebarMenuItemAllowlist | toJson }},
+                   {{- end }}
+                   {{- if kindIs "slice" .Values.config.rubinPrimaryMenuItemAllowlist }}
+                   "rubinPrimaryMenuItemAllowlist": {{ .Values.config.rubinPrimaryMenuItemAllowlist | toJson }},
+                   {{- end }}
+                   {{- if kindIs "bool" .Values.config.backgroundMonitor }}
+                   "backgroundMonitor": {{ .Values.config.backgroundMonitor | toJson }},
+                   {{- end }}
                    "SIAv2" : {
                       "additional": {
-                          "services": [
+                          "services": {{ if kindIs "slice" .Values.config.siav2AdditionalServicesOverride }}
+                              {{ .Values.config.siav2AdditionalServicesOverride | toJson }}
+                          {{- else }}
+                          [
                             {
                                "label": "DP1 Images SIAv2",
                                "serviceId": "DP1ImagesSIAv2",
@@ -169,11 +181,15 @@ spec:
                                "fovDeg": 10
                             }
                           ]
+                        {{- end }}
                       }
                    },
                    "tap" : {
                       "additional": {
-                          "services": [
+                          "services": {{ if kindIs "slice" .Values.config.tapAdditionalServicesOverride }}
+                              {{ .Values.config.tapAdditionalServicesOverride | toJson }}
+                          {{- else }}
+                          [
                             {
                                "label": "Rubin TAP",
                                "serviceId": "RubinPrimaryTAPID",
@@ -209,6 +225,7 @@ spec:
                             }
                             {{- end }}
                           ]
+                        {{- end }}
                       }
                    },
                 }
