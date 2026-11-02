@@ -11,5 +11,5 @@ config:
     - "TAPSearch"
     - "SIAv2Search"
   backgroundMonitor: false
-  siav2AdditionaServicesOverride: null # Override additional SIAv2 services (`null` retains defaults; `[]` removes them)
+  siav2AdditionalServicesOverride: null # Override additional SIAv2 services (`null` retains defaults; `[]` removes them)
   tapAdditionalServicesOverride: null # Override additional TAP services (`null` retains defaults; `[]` removes them)
