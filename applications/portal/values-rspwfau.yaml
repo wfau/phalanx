@@ -1,5 +1,5 @@
 image:
-  repository: "wfau/suit"
+  repository: "ghcr.io/wfau/suit"
   tag: "allowlist"
 
 config:
