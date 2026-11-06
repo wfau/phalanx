@@ -93,7 +93,7 @@ config:
 
   # -- Whether to enable the Firefly background monitor
   backgroundMonitor: null
- 
+
   # -- Override additional SIAv2 services (`null` retains defaults; `[]` removes them)
   siav2AdditionalServicesOverride: null
 

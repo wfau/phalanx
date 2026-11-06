@@ -13,12 +13,17 @@ Rubin Science Platform Portal Aspect
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Affinity rules for the Portal pod |
 | config.alertMessage | string | `nil` | If not null, display this alert to all users in a banner |
+| config.backgroundMonitor | string | `nil` | Whether to enable the Firefly background monitor |
 | config.cleanupInterval | string | `"36h"` | How long results should be retained before being deleted |
 | config.debug | string | `"FALSE"` | Set to `TRUE` to enable service debugging |
 | config.hipsUrl | string | `/api/hips/images/color_gri` in the local Science Platform | URL for default HiPS service |
 | config.livetap | string | `""` | Endpoint under `/api/` for the live TAP service on the instance, if present |
+| config.rubinPrimaryMenuItemAllowlist | string | `nil` | Menu actions shown as primary topbar tabs |
+| config.rubinSidebarMenuItemAllowlist | string | `nil` | Menu actions shown in the tab selection sidebar |
 | config.showUserInfo | string | `"true"` | Whether to show information about the logged-in user |
+| config.siav2AdditionalServicesOverride | string | `nil` | Override additional SIAv2 services (`null` retains defaults; `[]` removes them) |
 | config.ssotap | string | `""` | Endpoint under `/api/` for the DP0.3 SSO TAP service on the instance, if present |
+| config.tapAdditionalServicesOverride | string | `nil` | Override additional TAP services (`null` retains defaults; `[]` removes them) |
 | config.tapHistoryLimit | string | `"1000"` | Maximum number of recent TAP queries to show in history |
 | config.visualizeFitsSearchPath | string | `"/datasets"` | Search path for FITS files |
 | config.volumes.config | object | use an `emptyDir` | configuration directory accessible read-only to all Portal pods |

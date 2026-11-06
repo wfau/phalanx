@@ -140,7 +140,7 @@ spec:
                 {{- end }}
             - name: "PROPS_FIREFLY_OPTIONS"
               value: >-
-                {   
+                {
                    {{- if kindIs "slice" .Values.config.rubinSidebarMenuItemAllowlist }}
                    "rubinSidebarMenuItemAllowlist": {{ .Values.config.rubinSidebarMenuItemAllowlist | toJson }},
                    {{- end }}

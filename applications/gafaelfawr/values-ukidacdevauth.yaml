@@ -6,7 +6,7 @@ config:
   internalDatabase: true
 
   updateSchema: false
-  
+
   oidc:
     clientId: "rsp-dev"
     audience: "rsp-dev"
@@ -53,6 +53,3 @@ config:
     - "gpfrancis"
     - "davedavemckay"
     - "etoledor"
-
-    
-    
