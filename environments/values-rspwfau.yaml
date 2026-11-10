@@ -1,5 +1,8 @@
 name: "rspwfau"
 fqdn: "wfau.lsst.ac.uk"
+description: >-
+  Test environment for an implementation of the Rubin Science Platform
+  tailored for WFAU.
 appOfAppsName: "science-platform"
 vaultUrl: "https://vault-rsp.lsst.ac.uk"
 vaultPathPrefix: "secret/phalanx/rspwfau"

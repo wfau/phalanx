@@ -179,6 +179,19 @@
       "title": "Domain name",
       "type": "string"
     },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Full description of this Phalanx environment",
+      "title": "Description"
+    },
     "appOfAppsName": {
       "anyOf": [
         {
